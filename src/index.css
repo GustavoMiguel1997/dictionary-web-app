@@ -1,0 +1,38 @@
+@import url('./tokens.css');
+
+@font-face {
+  font-family: Inter;
+  src: url('./assets/fonts/inter/Inter-VariableFont_slnt\,wght.ttf');
+}
+
+@font-face {
+  font-family: Lora;
+  src: url('./assets/fonts/lora/Lora-Italic-VariableFont_wght.ttf');
+}
+
+@font-face {
+  font-family: Mono;
+  src: url('./assets/fonts/inconsolata/Inconsolata-VariableFont_wdth\,wght.ttf');
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--background);
+}
+
+[data-font='Inter'] * {
+  font-family: Inter;
+}
+
+[data-font='Lora'] * {
+  font-family: Lora;
+}
+
+[data-font='Mono'] * {
+  font-family: Mono;
+}

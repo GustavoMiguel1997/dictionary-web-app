@@ -1,0 +1,17 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  height: 36px;
+}
+
+.header__actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.header__actions__separator {
+  background-color: var(--gray-light);
+  height: 25px;
+  width: 1px;
+}
