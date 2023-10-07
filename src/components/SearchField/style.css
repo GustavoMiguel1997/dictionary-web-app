@@ -1,0 +1,27 @@
+.inputField {
+  position: relative;
+  width: 100%;
+}
+
+.inputField__input {
+  background-color: var(--input-background);
+  border: none;
+  border-radius: 16px;
+  color: var(--title);
+  font-size: 20px;
+  font-weight: 700;
+  padding: 20px 24px;
+  height: 64px;
+  width: 100%;
+}
+
+.inputField__input:focus {
+  outline: 1px solid var(--purple);
+}
+
+.inputField img {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}

@@ -13,6 +13,7 @@
 
 [data-theme='light'] {
   --background: var(--white);
+  --input-background: var(--gray-ultra-light);
   --block-background: var(--white);
   --title: var(--black-soft);
   --shadow: #0000001a;
@@ -20,6 +21,7 @@
 
 [data-theme='dark'] {
   --background: var(--black-heavy);
+  --input-background: var(--black-medium);
   --block-background: var(--black-medium);
   --title: var(--white);
   --shadow: var(--purple);

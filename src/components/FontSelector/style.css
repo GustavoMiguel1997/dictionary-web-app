@@ -25,6 +25,7 @@
   padding: 24px;
   list-style: none;
   text-align: left;
+  z-index: 1;
   width: 180px;
 }
 
