@@ -1,5 +1,11 @@
 import { useEffect, useState, ChangeEvent } from 'react';
-import { Header, SearchField, NotFound } from '@/components';
+import {
+  Header,
+  SearchField,
+  NotFound,
+  DefinitionPreview,
+  Meaning,
+} from '@/components';
 import { getWord } from '@/services/dictionaryService';
 import type { Definitions } from '@/types';
 import './style.css';
@@ -11,7 +17,7 @@ function App() {
     document.documentElement.setAttribute('data-font', 'Inter');
   }, []);
 
-  const [definitions, setDefinitions] = useState<undefined | Definitions>();
+  const [definitions, setDefinitions] = useState<null | Definitions>(null);
   const [error, setError] = useState(false);
 
   function handleChangeSearch(e: ChangeEvent<HTMLInputElement>) {
@@ -23,12 +29,14 @@ function App() {
     try {
       const [definitionsResp] = await getWord(word);
       setDefinitions(definitionsResp);
+      setError(false);
     } catch (error) {
       setError(true);
-      setDefinitions();
+      setDefinitions(null);
     }
   }
 
+  const hasWordDefinition = !error && definitions;
   console.log(definitions);
 
   return (
@@ -36,6 +44,16 @@ function App() {
       <Header />
       <SearchField onChange={handleChangeSearch} />
       {error && <NotFound />}
+      {hasWordDefinition && (
+        <>
+          <DefinitionPreview
+            word={definitions.word}
+            phonetic={definitions.phonetic}
+            audioSrc={definitions.phonetics.find((item) => item.audio).audio}
+          />
+          <Meaning meanings={definitions.meanings} />
+        </>
+      )}
     </main>
   );
 }

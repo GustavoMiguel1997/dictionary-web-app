@@ -1,0 +1,37 @@
+.audioPlayer {
+  position: relative;
+  height: 75px;
+  width: 75px;
+}
+
+.audioPlayer__button {
+  background-color: #e5d0f7;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  height: inherit;
+  width: inherit;
+}
+
+.audioPlayer__button:hover {
+  background-color: #dcc3f1;
+}
+
+.audioPlayer__button::after {
+  content: '';
+  position: absolute;
+  border-top: solid 15px transparent;
+  border-left: solid 25px var(--purple);
+  border-bottom: solid 15px transparent;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 55%;
+}
+
+.audioPlayer__button.isPlaying::after {
+  background-color: var(--purple);
+  border: none;
+  left: 50%;
+  height: 25px;
+  width: 5px;
+}

@@ -1,0 +1,22 @@
+.definitionPreview {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.definitionPreview__word__title {
+  color: #2d2d2d;
+  font-size: 64px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-bottom: 8px;
+}
+
+.definitionPreview__word__phonetic {
+  color: #a445ed;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}

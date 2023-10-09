@@ -1,7 +1,7 @@
 interface Definitions {
   word: string;
   phonetic: string;
-  meaning: Meaning[];
+  meanings: Meaning[];
   phonetics: Phonetic[];
 }
 
@@ -23,4 +23,4 @@ interface Phonetic {
   audio: string;
 }
 
-export type { Definitions };
+export type { Definitions, Meaning };
