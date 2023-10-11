@@ -4,7 +4,7 @@ import './style.css';
 interface Props {
   word: string;
   phonetic: string;
-  audioSrc: string;
+  audioSrc?: string;
 }
 
 function DefinitionPreview({ word, phonetic, audioSrc }: Props) {
@@ -14,7 +14,7 @@ function DefinitionPreview({ word, phonetic, audioSrc }: Props) {
         <h2 className="definitionPreview__word__title">{word}</h2>
         <span className="definitionPreview__word__phonetic">{phonetic}</span>
       </div>
-      <AudioPlayer source={audioSrc} />
+      {audioSrc && <AudioPlayer source={audioSrc} />}
     </div>
   );
 }

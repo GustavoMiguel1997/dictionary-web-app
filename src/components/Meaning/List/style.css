@@ -1,0 +1,24 @@
+.list {
+  color: red;
+  padding-left: 50px;
+  list-style: none;
+}
+
+.list__item {
+  color: var(--title);
+  font-size: 18px;
+  margin-bottom: 14px;
+  position: relative;
+}
+
+.list__item::before {
+  content: '';
+  position: absolute;
+  left: -15px;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--purple);
+  border-radius: 50%;
+  height: 5px;
+  width: 5px;
+}

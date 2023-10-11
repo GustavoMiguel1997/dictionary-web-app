@@ -1,0 +1,15 @@
+.synonyms {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.synonyms__title {
+  color: var(--title);
+}
+
+.synonyms span {
+  color: var(--purple);
+  font-size: 20px;
+  font-weight: 700;
+}

@@ -37,7 +37,6 @@ function App() {
   }
 
   const hasWordDefinition = !error && definitions;
-  console.log(definitions);
 
   return (
     <main className="app">
@@ -49,9 +48,12 @@ function App() {
           <DefinitionPreview
             word={definitions.word}
             phonetic={definitions.phonetic}
-            audioSrc={definitions.phonetics.find((item) => item.audio).audio}
+            audioSrc={definitions.phonetics.find((item) => item.audio)?.audio}
           />
-          <Meaning meanings={definitions.meanings} />
+          <Meaning
+            meanings={definitions.meanings}
+            source={definitions.sourceUrls[0]}
+          />
         </>
       )}
     </main>

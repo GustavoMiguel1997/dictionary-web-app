@@ -1,0 +1,11 @@
+.source {
+  display: flex;
+  color: #757575;
+  font-size: 14px;
+  align-items: center;
+  gap: 22px;
+}
+
+.source__link {
+  color: var(--title);
+}

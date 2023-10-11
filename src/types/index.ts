@@ -3,6 +3,7 @@ interface Definitions {
   phonetic: string;
   meanings: Meaning[];
   phonetics: Phonetic[];
+  sourceUrls: string[];
 }
 
 interface Meaning {
@@ -23,4 +24,4 @@ interface Phonetic {
   audio: string;
 }
 
-export type { Definitions, Meaning };
+export type { Definitions, Definition, Meaning };

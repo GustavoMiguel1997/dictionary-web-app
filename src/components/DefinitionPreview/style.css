@@ -5,7 +5,7 @@
 }
 
 .definitionPreview__word__title {
-  color: #2d2d2d;
+  color: var(--title);
   font-size: 64px;
   font-style: normal;
   font-weight: 700;
