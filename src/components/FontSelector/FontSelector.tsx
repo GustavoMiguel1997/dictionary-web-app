@@ -2,28 +2,23 @@ import { useState } from 'react';
 import { Icon } from '@/components';
 import './style.css';
 
-interface Font {
-  label: string;
-  name: string;
-}
-
 const AVAILABLE_FONTS = [
   { label: 'Sans Serif', name: 'Inter' },
   { label: 'Serif', name: 'Lora' },
   { label: 'Mono', name: 'Mono' },
 ];
 
-function FontSelector() {
-  const [currentFont, setCurrentFont] = useState<Font>(AVAILABLE_FONTS[0]);
+interface Props {
+  currentFont: string;
+  onChange: (font: string) => void;
+}
+
+function FontSelector({ currentFont, onChange }: Props) {
   const [isOptionsVisible, setIsOptionsVisible] = useState(false);
 
-  function handleChangeFont(
-    e: React.MouseEvent<HTMLLIElement, MouseEvent>,
-    font: Font,
-  ) {
-    e.preventDefault();
-    setCurrentFont(font);
-    document.documentElement.setAttribute('data-font', font.name);
+  function getFontLabel() {
+    const font = AVAILABLE_FONTS.find((font) => font.name === currentFont);
+    return font?.label;
   }
 
   // Precisa ajustar o clique do botão, ta fechando de forma incorreta
@@ -33,7 +28,7 @@ function FontSelector() {
       className="fontSelector"
       onClick={() => setIsOptionsVisible(!isOptionsVisible)}
     >
-      <span>{currentFont.label}</span>
+      <span>{getFontLabel()}</span>
       <Icon name="arrowDown" />
 
       {isOptionsVisible && (
@@ -41,8 +36,8 @@ function FontSelector() {
           {AVAILABLE_FONTS.map((font) => (
             <li
               key={font.name}
-              onClick={(e) => handleChangeFont(e, font)}
               style={{ fontFamily: font.name }}
+              onClick={() => onChange(font.name)}
             >
               {font.label}
             </li>

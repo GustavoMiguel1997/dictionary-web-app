@@ -1,4 +1,4 @@
-import { useEffect, useState, ChangeEvent } from 'react';
+import { useState, ChangeEvent } from 'react';
 import {
   Header,
   SearchField,
@@ -6,17 +6,13 @@ import {
   DefinitionPreview,
   Meaning,
 } from '@/components';
+
 import { getWord } from '@/services/dictionaryService';
+
 import type { Definitions } from '@/types';
 import './style.css';
 
 function App() {
-  useEffect(() => {
-    // aqui posso setar caso tiver algo salvo no localStorage
-    document.documentElement.setAttribute('data-theme', 'light');
-    document.documentElement.setAttribute('data-font', 'Inter');
-  }, []);
-
   const [definitions, setDefinitions] = useState<null | Definitions>(null);
   const [error, setError] = useState(false);
 

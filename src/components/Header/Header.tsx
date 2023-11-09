@@ -1,25 +1,28 @@
 import { Icon, FontSelector, Toggle } from '@/components';
+import useTheme from '@/hooks/useTheme';
 import './style.css';
 
 function Header() {
-  function handleChangeTheme() {
-    const currentTheme = document.documentElement.getAttribute('data-theme');
+  const { theme, font, setTheme, setFont } = useTheme();
 
-    if (!currentTheme) {
-      document.documentElement.setAttribute('data-theme', 'dark');
-      return;
-    }
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    document.documentElement.setAttribute('data-theme', newTheme);
+  function handleChangeTheme() {
+    theme === 'dark' ? setTheme('light') : setTheme('dark');
+  }
+
+  function hasDarkTheme() {
+    return theme === 'dark';
   }
 
   return (
     <header className="header">
       <Icon name="logo" />
       <div className="header__actions">
-        <FontSelector />
+        <FontSelector
+          currentFont={font}
+          onChange={(newFont) => setFont(newFont)}
+        />
         <div className="header__actions__separator"></div>
-        <Toggle onChange={handleChangeTheme} />
+        <Toggle checked={hasDarkTheme()} onChange={handleChangeTheme} />
         <Icon name="moon" />
       </div>
     </header>
