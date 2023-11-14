@@ -19,6 +19,7 @@
   background-color: var(--block-background);
   box-shadow: 0px 5px 30px 0px var(--shadow);
   border-radius: 16px;
+  cursor: default;
   position: absolute;
   top: 30px;
   right: 0px;

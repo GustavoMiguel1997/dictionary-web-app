@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
+import useComponentVisible from '@/hooks/useComponentVisible';
 import { Icon } from '@/components';
 import './style.css';
 
@@ -14,30 +15,36 @@ interface Props {
 }
 
 function FontSelector({ currentFont, onChange }: Props) {
-  const [isOptionsVisible, setIsOptionsVisible] = useState(false);
+  const elementRef = useRef(null);
+  const [isVisible, setIsVisible] = useComponentVisible(elementRef.current);
 
   function getFontLabel() {
     const font = AVAILABLE_FONTS.find((font) => font.name === currentFont);
     return font?.label;
   }
 
-  // Precisa ajustar o clique do botão, ta fechando de forma incorreta
-
   return (
     <button
+      ref={elementRef}
       className="fontSelector"
-      onClick={() => setIsOptionsVisible(!isOptionsVisible)}
+      onClick={() => setIsVisible(!isVisible)}
     >
       <span>{getFontLabel()}</span>
       <Icon name="arrowDown" />
 
-      {isOptionsVisible && (
-        <ul className="fontSelector__options">
+      {isVisible && (
+        <ul
+          className="fontSelector__options"
+          onClick={(e) => e.stopPropagation()}
+        >
           {AVAILABLE_FONTS.map((font) => (
             <li
               key={font.name}
               style={{ fontFamily: font.name }}
-              onClick={() => onChange(font.name)}
+              onClick={() => {
+                onChange(font.name);
+                setIsVisible(false);
+              }}
             >
               {font.label}
             </li>
