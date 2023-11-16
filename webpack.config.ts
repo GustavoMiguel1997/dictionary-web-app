@@ -57,6 +57,11 @@ const config: webpack.Configuration = {
     ],
   },
   plugins: [htmlWebpackPlugin, new MiniCssExtractPlugin()],
+  performance: {
+    hints: false,
+    maxEntrypointSize: 512000,
+    maxAssetSize: 512000,
+  },
 };
 
 if (isDevelopment) {
@@ -64,6 +69,7 @@ if (isDevelopment) {
   config.devtool = 'eval-source-map';
 } else {
   config.mode = 'production';
+  config.devtool = false;
 }
 
 export default config;
